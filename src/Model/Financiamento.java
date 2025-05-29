@@ -1,4 +1,6 @@
 package src.Model;
 
-public class Financiamento {
+public abstract class Financiamento {
+
+
 }
