@@ -12,14 +12,29 @@ public class Carro extends Veiculo {
         this.arCondicionado = arCondicionado;
     }
 
-    public int getNumeroPortas() { return numeroPortas; }
-    public void setNumeroPortas(int numeroPortas) { this.numeroPortas = numeroPortas; }
+    public int getNumeroPortas() {
+        return numeroPortas;
+    }
 
-    public String getTipoCombustivel() { return tipoCombustivel; }
-    public void setTipoCombustivel(String tipoCombustivel) { this.tipoCombustivel = tipoCombustivel; }
+    public void setNumeroPortas(int numeroPortas) {
+        this.numeroPortas = numeroPortas;
+    }
 
-    public boolean isArCondicionado() { return arCondicionado; }
-    public void setArCondicionado(boolean arCondicionado) { this.arCondicionado = arCondicionado; }
+    public String getTipoCombustivel() {
+        return tipoCombustivel;
+    }
+
+    public void setTipoCombustivel(String tipoCombustivel) {
+        this.tipoCombustivel = tipoCombustivel;
+    }
+
+    public boolean isArCondicionado() {
+        return arCondicionado;
+    }
+
+    public void setArCondicionado(boolean arCondicionado) {
+        this.arCondicionado = arCondicionado;
+    }
 
     @Override
     public String getTipo() {
