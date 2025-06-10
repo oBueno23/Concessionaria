@@ -1,4 +1,4 @@
-package model;
+package src.Model;
 
 public abstract class Veiculo {
     protected String chassi;
