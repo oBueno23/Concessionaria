@@ -19,7 +19,6 @@ public abstract class Veiculo {
         this.disponivel = true;
     }
 
-    // Getters e Setters
     public String getChassi() { return chassi; }
     public void setChassi(String chassi) { this.chassi = chassi; }
 
