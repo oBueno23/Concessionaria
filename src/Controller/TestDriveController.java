@@ -3,6 +3,7 @@ package src.Controller;
 import src.Model.Cliente;
 import src.Model.TestDrive;
 import src.Model.Veiculo;
+import src.Util.Logger;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ public class TestDriveController {
         String id = UUID.randomUUID().toString();
         TestDrive testDrive = new TestDrive(id, cliente, veiculo, dataHora, duracaoMinutos);
         testDrives.add(testDrive);
-
+        Logger.log("Test drive agendado: " + testDrive);
         return id;
     }
 
@@ -33,6 +34,7 @@ public class TestDriveController {
         if (testDrive != null && testDrive.getStatus().equals("AGENDADO")) {
             testDrive.setStatus("REALIZADO");
             testDrive.setObservacoes(observacoes);
+            Logger.log("Test drive realizado: " + testDrive);
             return true;
         }
         return false;
@@ -42,6 +44,7 @@ public class TestDriveController {
         TestDrive testDrive = buscarPorId(id);
         if (testDrive != null && testDrive.getStatus().equals("AGENDADO")) {
             testDrive.setStatus("CANCELADO");
+            Logger.log("Test drive cancelado: " + testDrive);
             return true;
         }
         return false;

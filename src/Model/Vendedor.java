@@ -15,7 +15,7 @@ public class Vendedor extends Funcionario{
     }
 
     public List<Venda> getVendas(){return vendas; }
-    public void AdicionarVenda(Venda venda){this.vendas.add(venda);}
+    public void adicionarVenda(Venda venda){this.vendas.add(venda);}
 
     public double getPercentualComissao(){return getPercentualComissao();}
     public void setPercentualComissao(double percentualComissao) {this.percentualComissao = percentualComissao; }

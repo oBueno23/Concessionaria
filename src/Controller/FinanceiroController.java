@@ -2,6 +2,7 @@ package src.Controller;
 
 import src.Model.Financiamento;
 import src.Model.Venda;
+import src.Util.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +29,7 @@ public class FinanceiroController {
         Financiamento financiamento = buscarPorId(id);
         if (financiamento != null && financiamento.getStatus().equals("PENDENTE")) {
             financiamento.setStatus("APROVADO");
+            Logger.log("Financiamento aprovado: " + financiamento);
             return true;
         }
         return false;
@@ -37,6 +39,7 @@ public class FinanceiroController {
         Financiamento financiamento = buscarPorId(id);
         if (financiamento != null && financiamento.getStatus().equals("PENDENTE")) {
             financiamento.setStatus("REPROVADO");
+            Logger.log("Financiamento reprovado: " + financiamento);
             return true;
         }
         return false;

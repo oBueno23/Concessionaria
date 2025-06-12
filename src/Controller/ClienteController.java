@@ -1,53 +1,61 @@
 package src.Controller;
 
+import src.Interface.Gerenciavel;
 import src.Model.Cliente;
+import src.Util.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClienteController {
-    private List<Cliente>clientes;
+public class ClienteController implements Gerenciavel<Cliente> {
+    private List<Cliente> clientes;
 
-    public ClienteController(){
+    public ClienteController() {
         this.clientes = new ArrayList<>();
     }
 
-    public boolean cadastrarCliente (String nome, String CPF, String telefone, String email, String endereco, double rendaMensal){
-        if (buscarPorCpf(CPF) !=null){
-            return false;
+    @Override
+    public boolean cadastrar(Cliente cliente) {
+        if (buscarPorId(cliente.getCPF()) != null) {
+            return false; // Cliente já existe
         }
-        Cliente cliente = new Cliente(nome, CPF, telefone, email, endereco, rendaMensal);
         clientes.add(cliente);
+        Logger.log("Cliente cadastrado" + cliente.getNome() + "(CPF: " + cliente.getCPF() + ")");
         return true;
     }
 
-    public Cliente buscarPorCpf(String CPF){
+    @Override
+    public Cliente buscarPorId(String cpf) {
         return clientes.stream()
-                .filter(c -> c.getCPF().equals(CPF))
+                .filter(c -> c.getCPF().equals(cpf))
                 .findFirst()
                 .orElse(null);
     }
 
-
-    public List<Cliente> listarTodos(){
+    @Override
+    public List<Cliente> listarTodos() {
         return new ArrayList<>(clientes);
     }
 
-    public boolean atualizarCliente(String CPF, String nome, String telefone, String email, String endereco, double rendaMensal){
-        Cliente cliente = buscarPorCpf(CPF);
-        if (cliente != null){
-            cliente.setNome(nome);
-            cliente.setTelefone(telefone);
-            cliente.setEmail(email);
-            cliente.setEndereco(endereco);
-            cliente.setRendaMensal(rendaMensal);
+    @Override
+    public boolean atualizar(String cpf, Cliente clienteAtualizado) {
+        Cliente cliente = buscarPorId(cpf);
+        if (cliente != null) {
+            cliente.setNome(clienteAtualizado.getNome());
+            cliente.setTelefone(clienteAtualizado.getTelefone());
+            cliente.setEmail(clienteAtualizado.getEmail());
+            cliente.setEndereco(clienteAtualizado.getEndereco());
+            cliente.setRendaMensal(clienteAtualizado.getRendaMensal());
+            Logger.log("Cliente atualizado: " + cliente.getNome() + " (CPF: " + cpf + ")");
             return true;
         }
         return false;
     }
 
-    public boolean removerCliente(String CPF){
-        return clientes.removeIf(c -> c.getCPF().equals(CPF));
+    @Override
+    public boolean remover(String cpf) {
+        boolean removed = clientes.removeIf(c -> c.getCPF().equals(cpf));
+        Logger.log(removed ? "Cliente removido" + cpf : "Cliente não encontrado para remoção" + cpf);
+        return removed;
     }
-
 }

@@ -79,7 +79,7 @@ public class TestDriveView {
 
         System.out.print("CPF do cliente: ");
         String cpfCliente = scanner.nextLine();
-        Cliente cliente = clienteController.buscarPorCpf(cpfCliente);
+        Cliente cliente = clienteController.buscarPorId(cpfCliente);
         if (cliente == null) {
             System.out.println("Cliente não encontrado!");
             return;
@@ -211,7 +211,7 @@ public class TestDriveView {
         System.out.print("CPF do cliente: ");
         String cpf = scanner.nextLine();
 
-        Cliente cliente = clienteController.buscarPorCpf(cpf);
+        Cliente cliente = clienteController.buscarPorId(cpf);
         if (cliente == null) {
             System.out.println("Cliente não encontrado!");
             return;

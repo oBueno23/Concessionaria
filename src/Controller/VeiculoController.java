@@ -4,6 +4,7 @@ import src.Model.Carro;
 import src.Model.Estoque;
 import src.Model.Moto;
 import src.Model.Veiculo;
+import src.Util.Logger;
 
 import java.util.List;
 
@@ -22,17 +23,18 @@ public class VeiculoController {
         }
         Carro carro = new Carro(chassi, marca, modelo, ano, cor, preco, numeroPortas, tipoCombustivel, arCondicionado);
         estoque.adicionarVeiculo(carro);
+        Logger.log("Carro cadastrado: " + modelo + " (Chassi: " + chassi + ")");
         return true;
     }
 
-    public boolean cadastrarMoto(String chassi, String marca, String modelo, int ano, String cor, double preco,
-                                 int cilindrada, String tipoPartida, boolean bagageiro) {
+    public boolean cadastrarMoto(String chassi, String marca, String modelo, int ano, String cor, double preco, int cilindrada, String tipoPartida, boolean bagageiro) {
         if (estoque.buscarPorChassi(chassi) != null) {
             return false; // Veículo já existe
         }
 
         Moto moto = new Moto(chassi, marca, modelo, ano, cor, preco, cilindrada, tipoPartida, bagageiro);
         estoque.adicionarVeiculo(moto);
+        Logger.log("Moto cadastrado: " + modelo + " (Chassi: " + chassi + ")");
         return true;
     }
 
@@ -53,7 +55,9 @@ public class VeiculoController {
     }
 
     public boolean removerVeiculo(String chassi) {
-        return estoque.removerVeiculo(chassi);
+        boolean removed = estoque.removerVeiculo(chassi);
+        Logger.log(removed ? "Veículo removido: " + chassi : "Veículo não encontrado para remoção: " + chassi);
+        return removed;
     }
 
     public boolean marcarComoVendido(String chassi) {

@@ -4,6 +4,7 @@ import src.Model.Cliente;
 import src.Model.Veiculo;
 import src.Model.Venda;
 import src.Model.Vendedor;
+import src.Util.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +29,7 @@ public class VendaController {
         veiculo.setDisponivel(false);
         cliente.adicionarCompra(venda);
         vendedor.adicionarVenda(venda);
-
+        Logger.log("Venda realizada: " + venda);
         return id;
     }
 
@@ -56,7 +57,9 @@ public class VendaController {
     }
 
     public double calcularFaturamentoTotal() {
-        return vendas.stream().mapToDouble(Venda::getValor).sum();
+        double total = vendas.stream().mapToDouble(Venda::getValor).sum();
+        Logger.log("Faturamento total calculado: R$ " + total);
+        return total;
     }
 
 }

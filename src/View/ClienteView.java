@@ -1,16 +1,17 @@
 package src.View;
 
 import src.Controller.ClienteController;
+import src.Interface.Gerenciavel;
 import src.Model.Cliente;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class ClienteView {
-    private ClienteController controller;
+    private Gerenciavel<Cliente> controller;
     private Scanner scanner;
 
-    public ClienteView(ClienteController controller) {
+    public ClienteView(Gerenciavel<Cliente> controller) {
         this.controller = controller;
         this.scanner = new Scanner(System.in);
     }
@@ -71,7 +72,8 @@ public class ClienteView {
         double rendaMensal = scanner.nextDouble();
         scanner.nextLine(); // Limpar buffer
 
-        if (controller.cadastrarCliente(nome, cpf, telefone, email, endereco, rendaMensal)) {
+        Cliente cliente = new Cliente(nome, cpf, telefone, email, endereco, rendaMensal);
+        if (controller.cadastrar(cliente)) {
             System.out.println("Cliente cadastrado com sucesso!");
         } else {
             System.out.println("Erro: Cliente com este CPF já existe!");
@@ -83,7 +85,7 @@ public class ClienteView {
         System.out.print("CPF: ");
         String cpf = scanner.nextLine();
 
-        Cliente cliente = controller.buscarPorCpf(cpf);
+        Cliente cliente = controller.buscarPorId(cpf);
         if (cliente != null) {
             System.out.println("Cliente encontrado:");
             System.out.println(cliente);
@@ -111,7 +113,7 @@ public class ClienteView {
         System.out.print("CPF do cliente: ");
         String cpf = scanner.nextLine();
 
-        Cliente cliente = controller.buscarPorCpf(cpf);
+        Cliente cliente = controller.buscarPorId(cpf);
         if (cliente == null) {
             System.out.println("Cliente não encontrado!");
             return;
@@ -138,7 +140,7 @@ public class ClienteView {
         String rendaStr = scanner.nextLine();
         double rendaMensal = rendaStr.isEmpty() ? cliente.getRendaMensal() : Double.parseDouble(rendaStr);
 
-        if (controller.atualizarCliente(cpf, nome, telefone, email, endereco, rendaMensal)) {
+        if (controller.atualizar(cpf, new Cliente(nome, cpf, telefone, email, endereco, rendaMensal))) {
             System.out.println("Cliente atualizado com sucesso!");
         } else {
             System.out.println("Erro ao atualizar cliente!");
@@ -150,7 +152,7 @@ public class ClienteView {
         System.out.print("CPF do cliente: ");
         String cpf = scanner.nextLine();
 
-        if (controller.removerCliente(cpf)) {
+        if (controller.remover(cpf)) {
             System.out.println("Cliente removido com sucesso!");
         } else {
             System.out.println("Cliente não encontrado!");
