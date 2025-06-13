@@ -38,8 +38,7 @@ public class VendaView {
             System.out.print("Escolha uma opção: ");
 
             opcao = scanner.nextInt();
-            scanner.nextLine(); // Limpar buffer
-
+            scanner.nextLine(); 
             switch (opcao) {
                 case 1:
                     realizarVenda();
