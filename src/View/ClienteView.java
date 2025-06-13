@@ -30,7 +30,7 @@ public class ClienteView {
             System.out.print("Escolha uma opção: ");
 
             opcao = scanner.nextInt();
-            scanner.nextLine(); // Limpar buffer
+            scanner.nextLine(); 
 
             switch (opcao) {
                 case 1:
@@ -70,7 +70,7 @@ public class ClienteView {
         String endereco = scanner.nextLine();
         System.out.print("Renda Mensal: ");
         double rendaMensal = scanner.nextDouble();
-        scanner.nextLine(); // Limpar buffer
+        scanner.nextLine(); 
 
         Cliente cliente = new Cliente(nome, cpf, telefone, email, endereco, rendaMensal);
         if (controller.cadastrar(cliente)) {
