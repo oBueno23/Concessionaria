@@ -17,7 +17,7 @@ public class ClienteController implements Gerenciavel<Cliente> {
     @Override
     public boolean cadastrar(Cliente cliente) {
         if (buscarPorId(cliente.getCPF()) != null) {
-            return false; // Cliente já existe
+            return false; 
         }
         clientes.add(cliente);
         Logger.log("Cliente cadastrado" + cliente.getNome() + "(CPF: " + cliente.getCPF() + ")");
