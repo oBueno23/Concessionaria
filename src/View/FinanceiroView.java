@@ -36,8 +36,7 @@ public class FinanceiroView {
             System.out.print("Escolha uma opção: ");
 
             opcao = scanner.nextInt();
-            scanner.nextLine(); // Limpar buffer
-
+            scanner.nextLine();
             switch (opcao) {
                 case 1:
                     solicitarFinanciamento();
@@ -96,7 +95,7 @@ public class FinanceiroView {
 
         if (valorFinanciado > venda.getValor()) {
             System.out.println("Valor financiado não pode ser maior que o valor da venda!");
-            scanner.nextLine(); // Limpar buffer
+            scanner.nextLine(); 
             return;
         }
 
@@ -105,14 +104,14 @@ public class FinanceiroView {
 
         if (numeroParcelas < 1 || numeroParcelas > 96) {
             System.out.println("Número de parcelas deve estar entre 1 e 96!");
-            scanner.nextLine(); // Limpar buffer
+            scanner.nextLine(); 
             return;
         }
 
         System.out.print("Taxa de juros mensal (%): ");
         double taxaJuros = scanner.nextDouble();
-        scanner.nextLine(); // Limpar buffer
-
+        scanner.nextLine();
+        
         System.out.print("Banco: ");
         String banco = scanner.nextLine();
 
@@ -123,7 +122,6 @@ public class FinanceiroView {
             System.out.println("Financiamento solicitado com sucesso!");
             System.out.println("ID do Financiamento: " + idFinanciamento);
 
-            // Mostrar detalhes da simulação
             Financiamento financiamento = financeiroController.buscarPorId(idFinanciamento);
             System.out.println("Valor das parcelas: R$ " + String.format("%.2f", financiamento.getValorParcela()));
             System.out.println("Total a pagar: R$ " + String.format("%.2f", financiamento.getValorParcela() * numeroParcelas));
@@ -280,7 +278,6 @@ public class FinanceiroView {
             System.out.println("Valor médio por financiamento: R$ " + String.format("%.2f", mediaFinanciamento));
         }
 
-        // Taxa de aprovação
         if (todosFinanciamentos.size() > 0) {
             double taxaAprovacao = (aprovados.size() * 100.0) / todosFinanciamentos.size();
             System.out.println("Taxa de aprovação: " + String.format("%.1f", taxaAprovacao) + "%");
@@ -298,9 +295,8 @@ public class FinanceiroView {
 
         System.out.print("Taxa de juros mensal (%): ");
         double taxaJuros = scanner.nextDouble();
-        scanner.nextLine(); // Limpar buffer
+        scanner.nextLine(); 
 
-        // Calcular valor da parcela usando a fórmula de financiamento
         double jurosDecimal = taxaJuros / 100;
         double valorParcela = (valorFinanciado * jurosDecimal * Math.pow(1 + jurosDecimal, numeroParcelas)) /
                 (Math.pow(1 + jurosDecimal, numeroParcelas) - 1);
