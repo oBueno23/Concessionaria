@@ -28,7 +28,7 @@ Para executar o projeto, siga as instruções abaixo:
 
 **Chat GPT / IAs**
 
-As IA's foram utilizadas para implementar alguns metodos como o gerador de IDs aleatorios (UUID) e tambem a implementação do Log, além obviamente de parte desse README.
+As IA's foram utilizadas para implementar alguns metodos como o gerador de IDs aleatorios (UUID) e tambem a implementação do Log, tambem usamos para fazer o calculo de financiamento(calculo de juros)além obviamente de parte desse README.
 
 **Referências**
 
