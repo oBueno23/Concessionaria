@@ -26,16 +26,4 @@ Para executar o projeto, siga as instruções abaixo:
 
 5-Siga as instruções no console para interagir com o sistema.
 
-**Chat GPT / IAs**
 
-As IA's foram utilizadas para implementar alguns metodos como o gerador de IDs aleatorios (UUID) e tambem a implementação do Log, tambem usamos para fazer o calculo de financiamento(calculo de juros)além obviamente de parte desse README.
-
-**Referências**
-
-Durante o desenvolvimento deste projeto, foram utilizados os seguintes recursos e referências:
-
--Curso Professor Guanabara de Java (https://www.youtube.com/watch?v=sTX0UEplF54&list=PLHz_AreHm4dkI2ZdjTwZA4mPMxWTfNSpR)
-
-**OBS**
-
-As commits realizadas por Matheus Jesus foram enviadas acidentalmente pela conta "fabiodbdb22"
